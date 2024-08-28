@@ -58,10 +58,44 @@
 				Ch04. Controller (Validation)
 			</button>
 	    </h2>
-	<div id="ch04" class="accordion-collapse collapse show" data-bs-parent="#accordionMenu">
+	<div id="ch04" class="accordion-collapse collapse" data-bs-parent="#accordionMenu">
 		<div class="accordion-body">
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/ch04/loginForm">로그인 폼</a></li>
+		
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header">
+			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ch05" aria-expanded="true" aria-controls="ch05">
+				Ch05. Controller (Header / Cookie)
+			</button>
+	    </h2>
+	<div id="ch05" class="accordion-collapse collapse" data-bs-parent="#accordionMenu">
+		<div class="accordion-body">
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/ch05/header">요청 헤더값 얻기</a></li>
+				<li><a href="${pageContext.request.contextPath}/ch05/createCookie">쿠키 생성</a></li>
+				<li><a href="${pageContext.request.contextPath}/ch05/readCookie">쿠키 읽기</a></li>
+		
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header">
+			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ch06" aria-expanded="true" aria-controls="ch06">
+				Ch06. Controller (Forward / Redirect)
+			</button>
+	    </h2>
+	<div id="ch05" class="accordion-collapse collapse show" data-bs-parent="#accordionMenu">
+		<div class="accordion-body">
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/ch06/forward">포워드</a></li>
+				<li><a href="${pageContext.request.contextPath}/ch06/redirect">리다이렉트</a></li>
+				<li><a href="${pageContext.request.contextPath}/ch06/sessionData">다른 요청시 세션 데이터 이용</a></li>
 		
 			</ul>
 		</div>
