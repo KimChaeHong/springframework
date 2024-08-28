@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">		<!--클래스, 패키지이름, 메서드명 로그메세지 개행  -->
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}.%M() - %msg%n"/>
+      					  <!-- 시간          뜨래드  빈공간5개좌측정렬 로그레벨     -->
+    </Console>
+  </Appenders>
+  <Loggers><!-- custom log levels -->
+    <Root level="error"><!-- root src/main/java 를 뜻한다.-->
+    <!-- 로그레벨 설정 :  외부 라이브러리 일 경우에 error / 내가 만들 때는 info 레벨 이상인거 debug -->
+      <AppenderRef ref="Console"/>
+    </Root>
+    <!-- 원하는 패키지에만 로그를 미치고싶을 때 configure appenders-->
+    <Logger name = "com.mycompany.springframework" level="debug" additivity = "false">
+   	 	<AppenderRef ref="Console"/><!-- 출력하고 싶은 레벨 설정  -->
+    </Logger>
+  </Loggers>
+</Configuration>
