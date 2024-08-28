@@ -90,7 +90,7 @@
 				Ch06. Controller (Forward / Redirect)
 			</button>
 	    </h2>
-	<div id="ch05" class="accordion-collapse collapse show" data-bs-parent="#accordionMenu">
+	<div id="ch06" class="accordion-collapse collapse show" data-bs-parent="#accordionMenu">
 		<div class="accordion-body">
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/ch06/forward">포워드</a></li>
