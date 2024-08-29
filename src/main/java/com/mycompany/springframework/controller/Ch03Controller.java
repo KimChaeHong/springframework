@@ -39,13 +39,18 @@ public class Ch03Controller {
 		model.addAttribute("param3", param3);
 		model.addAttribute("param4", param4);
 		model.addAttribute("param5", param5);
+		
+		model.addAttribute("chNum","ch03");
 
 		return "ch03/receiveParamData";
 	}
 
 	//POST 방식 데이터 읽기
 	@GetMapping("/postMethodForm")
-	public String postMethodForm() {
+	public String postMethodForm(Model model) {
+		
+		model.addAttribute("chNum","ch03");
+
 		return "ch03/postMethodForm";
 	}
 
@@ -65,6 +70,9 @@ public class Ch03Controller {
 		model.addAttribute("param3", param3);
 		model.addAttribute("param4", param4);
 		model.addAttribute("param5", param5);
+		
+		model.addAttribute("chNum","ch03");
+
 
 		return "ch03/receiveParamData";
 	}
@@ -87,6 +95,9 @@ public class Ch03Controller {
 		model.addAttribute("param3", param3);
 		model.addAttribute("param4", param4);
 		model.addAttribute("param5", param5);
+		
+		model.addAttribute("chNum","ch03");
+
 
 		return "ch03/receiveParamData";
 	}
@@ -110,6 +121,9 @@ public class Ch03Controller {
 		model.addAttribute("param3", arg3);
 		model.addAttribute("param4", arg4);
 		model.addAttribute("param5", arg5);
+		
+		model.addAttribute("chNum","ch03");
+
 
 		return "ch03/receiveParamData";
 	}
@@ -125,13 +139,20 @@ public class Ch03Controller {
 
 		// JSP로 데이터 전달(CommendObject를 사용할 경우 자동으로 전달)
 		// model.addAllAttribute("ch03Dto",dto); 첫번째가 소문자가 된다.
+		
+		
+		model.addAttribute("chNum","ch03");
+
 
 		return "ch03/receiveCommandObject";
 	}
 
 	//AJAX로 보낸 데이터를 DTO로 받기
 	@GetMapping("/ajaxParam")
-	public String ajaxParam() {
+	public String ajaxParam(Model model) {
+		
+		model.addAttribute("chNum","ch03");
+
 		return "ch03/ajaxParam";
 	}
 
