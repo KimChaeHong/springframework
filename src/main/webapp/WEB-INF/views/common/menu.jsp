@@ -136,4 +136,39 @@
 	</div>
 	</div>
 	
+	<div class="accordion-item">
+		<h2 class="accordion-header">
+			<button class="accordion-button ${chNum=='ch09'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#ch09" aria-expanded="${chNum=='ch09'}" aria-controls="ch09">
+				Ch09. 파일 업로드와 다운로드
+			</button>
+	    </h2>
+	<div id="ch09" class="accordion-collapse collapse ${chNum=='ch09'?'show':''}" data-bs-parent="#accordionMenu">
+		<div class="accordion-body">
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/ch09/fileUploadForm">파일 업로드</a></li> 
+				<li><a href="${pageContext.request.contextPath}/ch09/downloadFileList">파일 리스트</a></li><!-- 스토리지에 저장할 때 이름이 달라진다. --> 
+			</ul>
+		</div>
+	</div>
+	
+	</div>
+		<div class="accordion-item">
+		<h2 class="accordion-header">
+			<button class="accordion-button ${chNum=='ch10'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#ch10" aria-expanded="${chNum=='ch10'}" aria-controls="ch10">
+				Ch10. 예외 처리
+			</button>
+	    </h2>
+	<div id="ch10" class="accordion-collapse collapse ${chNum=='ch10'?'show':''}" data-bs-parent="#accordionMenu">
+		<div class="accordion-body">
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/ch10/handlingException1">try-catch 이용</a></li> 
+				<li><a href="${pageContext.request.contextPath}/ch10/handlingException2">@ExceptionHandler 이용</a></li> 
+				<li><a href="${pageContext.request.contextPath}/ch10/handlingException3">사용자 정의 예외 처리</a></li> 
+				<li><a href="${pageContext.request.contextPath}/ch10/handlingException4">기타 500 예외 처리</a></li> 
+				<li><a href="${pageContext.request.contextPath}/ch10/aaaaaaaaaaaaaaaaaa">404 처리</a></li> 
+				
+			</ul>
+		</div>
+	</div>
+	</div>
 </div>
