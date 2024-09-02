@@ -5,13 +5,15 @@
 	
 	<!-- id : 관리 객체 (명시적으로 키값을 주고 싶다면 id 속성 이용) -->
 	<!-- class : 어떤 클래스를 가지고 관리할 것이냐?> 보통 springframework가 제공 -->
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean id="messageSource"
+		  class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
 				<value>message/ch04_error</value>
+				<value>message/ch11_Internationalization</value>
 			</list>
-		</property>	
-		<property name="defaultEncoding" value="UTF-8"></property> <!-- 이 설정 내용으로 값을 읽는다. -->
+		</property>
+		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 
 </beans>
