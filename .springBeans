@@ -15,8 +15,11 @@
 		<config>src/main/resources/spring/dispatcher/ch04_ch11_message.xml</config>
 		<config>src/main/resources/spring/root/ch12_create_bean_by_xml.xml</config>
 		<config>src/main/resources/spring/dispatcher/ch12_properties.xml</config>
+		<config>src/main/resources/spring/root/ch13_datasource.xml</config>
+		<config>src/main/resources/spring/root/ch13_mybatis.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/spring/root/ch12_properties.xml</config>
 		<config>src/main/resources/spring/root/ch01_component_scan.xml</config>
 	</autoconfigs>
 	<configSets>

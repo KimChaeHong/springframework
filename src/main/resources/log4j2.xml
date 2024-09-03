@@ -16,5 +16,9 @@
     <Logger name = "com.mycompany.springframework" level="debug" additivity = "false">
    	 	<AppenderRef ref="Console"/><!-- 출력하고 싶은 레벨 설정  -->
     </Logger>
+
+    <Logger name = "jdbc.sqltiming" level="info" additivity = "false">
+   	 	<AppenderRef ref="Console"/>
+    </Logger>
   </Loggers>
 </Configuration>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycompany.springframework.dao.mybatis.Ch13BoardDao">
+<!-- 여기 있는 인터페이스의 메서드이름으로 mybstis에 의해서 자동으로 구현 클래스가 
+만들어지고 객체가 만들어지고 관리객차가 자동으로 된다  -->
+	<insert id="insert" parameterType="Board"><!-- alias : 파라메터 타입으로 매개변수 가져야한다. -->
+		insert into board (
+			bno, btitle, bcontent, bdate, mid, bhitcount, 
+			battachoname, battachsname, battachtype, battachdata
+		) values (
+			seq_bno.nextval, #{btitle}, #{bcontent}, sysdate, #{mid}, 0,
+			#{battachoname}, #{battachsname}, #{battachtype}, #{battachdata}
+		)
+</insert>
+</mapper>
