@@ -1,15 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mycompany.springframework.dao.mybatis.Ch13BoardDao">
-<!-- 여기 있는 인터페이스의 메서드이름으로 mybstis에 의해서 자동으로 구현 클래스가 
-만들어지고 객체가 만들어지고 관리객차가 자동으로 된다  -->
+<mapper
+	namespace="com.mycompany.springframework.dao.mybatis.Ch13BoardDao">
+	<!-- 여기 있는 인터페이스의 메서드이름으로 mybstis에 의해서 자동으로 구현 클래스가 만들어지고 객체가 만들어지고 관리객차가 
+		자동으로 된다 -->
 	<insert id="insert" parameterType="Board"><!-- alias : 파라메터 타입으로 매개변수 가져야한다. -->
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE"><!-- 실행하기 
+				전에 넘버가 있어야해서 비포로 함 -->
+			select seq_bno.nextval from dual
+		</selectKey>
 		insert into board (
-			bno, btitle, bcontent, bdate, mid, bhitcount, 
-			battachoname, battachsname, battachtype, battachdata
+		bno, btitle, bcontent, bdate, mid, bhitcount,
+		battachoname, battachsname, battachtype, battachdata
 		) values (
-			seq_bno.nextval, #{btitle}, #{bcontent}, sysdate, #{mid}, 0,
-			#{battachoname}, #{battachsname}, #{battachtype}, #{battachdata}
+		#{bno},
+		#{btitle}, #{bcontent}, sysdate, #{mid}, 0,
+		#{battachoname},#{battachsname}, #{battachtype}, #{battachdata}
 		)
-</insert>
+	</insert>
+				<!-- ┌매개변수 이름 		┌매서드 타입 		┌리턴 타입 : sql문에서 행이 하나만 나오면 board 여러개면 list-->
+	<select id="selectList" parameterType="Pager" resultType="Board">
+		<![CDATA[
+			select rnum, bno, btitle, mid, bdate, bhitcount
+				from(
+					select rownum as rnum, bno, btitle, mid, bdate, bhitcount
+					from(
+						select bno, btitle, mid, bdate, bhitcount
+						from board
+						order by bno desc
+						)
+				where rownum <= #{endRowNo}
+				)
+			where rnum >= #{startRowNo}
+		]]>
+		
+	</select>
+	
+	<select id="countRows" resultType="int">
+		select count(*) from board
+	</select>
+	
+	
+	
 </mapper>

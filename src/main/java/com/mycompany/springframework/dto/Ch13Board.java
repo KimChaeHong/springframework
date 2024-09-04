@@ -12,8 +12,8 @@ public class Ch13Board {
 	private Date bdate;
 	private String mid;
 	private int bhitcount; 
-	private String battachoname; 
-	private String battachsname; //실제 서버 파일 스토리지에 저장 된 파일 이름
-	private String battachtype; 
-	private byte[]  battachdata; //데이터 베이스 자체에 저장하고 싶을 때
+	private String battachoname; //original name, 원본 파일명
+	private String battachsname; //실제 파일 스토리지에 저장 된 파일 이름
+	private String battachtype;  //파일 타입
+	private byte[]  battachdata; //데이터 베이스 자체에 저장 된 파일 이름
 }

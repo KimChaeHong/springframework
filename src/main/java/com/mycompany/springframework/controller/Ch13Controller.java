@@ -2,6 +2,7 @@ package com.mycompany.springframework.controller;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.springframework.dto.Ch13Board;
+import com.mycompany.springframework.dto.Ch13Pager;
 import com.mycompany.springframework.dto.Ch13WriteBoardForm;
 import com.mycompany.springframework.service.Ch13BoardService;
 
@@ -51,4 +54,19 @@ public class Ch13Controller {
 		boardService.writeBoard(board);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/boardList")								/*┌페이지 넘버가 넘어오지 않았을 때 1이 되도록 하는 것*/ 
+	public String boardList(Model model,@RequestParam(defaultValue = "1") int pageNo) {
+		model.addAttribute("chNum","ch13");
+		
+		int totalRows = boardService.getTotalRows();
+		Ch13Pager pager = new Ch13Pager(10, 5, totalRows, pageNo);
+		model.addAttribute("pager", pager);/*jsp 에서도 사용*/
+		
+		List<Ch13Board> list = 	boardService.getBoardList(pager);
+		model.addAttribute("list",list);
+		return "ch13/boardList";
+	}
+	
+	
 }
