@@ -39,7 +39,42 @@
 	<select id="countRows" resultType="int">
 		select count(*) from board
 	</select>
+										<!-- ┌매개변수 int    ┌리턴타입 board  그러므로 한게의 행을 리턴하는 Ch13Board가 온다.--> 
+	<select id="selectByBno" parameterType="int" resultType="Board">
+		select bno, btitle, bcontent, bdate, mid, bhitcount, battachoname
+		from board
+		where bno=#{bno}
 	
+	</select>
 	
+	<select id="selectAttachByBno" parameterType="int" resultType="Board">
+		select battachoname, battachtype, battachdata
+		from board
+		where bno=#{bno}
+	</select>
+	
+	<update id="update" parameterType="Board">
+		update board set
+			btitle=#{btitle},
+			bcontent=#{bcontent}
+			<if test="battachoname != null">
+				,
+				battachoname=#{battachoname},
+				battachtype=#{battachtype},
+				battachdata=#{battachdata}
+			</if>
+		where bno=#{bno}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from board where bno=#{bno}
+	
+	</delete>
+	
+	<update id="updateHitcount" parameterType="int">
+		update board set
+		bhitcount=bhitcount+1
+		where bno=#{bno}
+	</update>
 	
 </mapper>

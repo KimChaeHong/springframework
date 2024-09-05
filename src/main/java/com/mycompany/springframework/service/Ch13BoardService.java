@@ -25,8 +25,8 @@ public class Ch13BoardService {
 	
 	//게시물 하나 가져오기
 	public Ch13Board getBoard(int bno) {
-		
-		return null;
+		Ch13Board board = boardDao.selectByBno(bno);
+		return board;
 	}
 	
 	//게시물 작성
@@ -41,11 +41,12 @@ public class Ch13BoardService {
 	
 	//게시물 수정
 	public void updateBoard(Ch13Board board) {
-		
+		boardDao.update(board);
 	}
 	
 	//게시물 삭제
 	public void deleteBoard(int bno) {
+		boardDao.delete(bno);
 		
 	}
 
@@ -53,5 +54,17 @@ public class Ch13BoardService {
 	public int getTotalRows() {
 		int totalRows = boardDao.countRows();
 		return totalRows;
+	}
+
+	//첨부파일 가져오기
+	public Ch13Board getBoardAttach(int bno) {
+		Ch13Board board = boardDao.selectAttachByBno(bno);
+		return board;
+	}
+	
+	//조회수
+	public void addHitcount(int bno) {
+		boardDao.updateHitcount(bno);
+		
 	}
 }

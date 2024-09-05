@@ -21,7 +21,7 @@
 											<!--└ 하나씩 꺼내오는게 board객체 참조하는 board 정해주자 -->
 				<tr>
 					<td>${board.bno}</td>
-					<td>${board.btitle}</td>
+					<td><a href="detailBoardAddHitcount?bno=${board.bno}">${board.btitle}</a></td>
 					<td>${board.mid}</td>
 					<td><fmt:formatDate value="${board.bdate}" pattern="yyyy.MM.dd"/></td>
 					<td>${board.bhitcount}</td> 
