@@ -4,6 +4,7 @@ import java.io.OutputStream;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -17,10 +18,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.springframework.dto.Ch13Board;
+import com.mycompany.springframework.dto.Ch13Member;
 import com.mycompany.springframework.dto.Ch13Pager;
 import com.mycompany.springframework.dto.Ch13UpdateBoardForm;
 import com.mycompany.springframework.dto.Ch13WriteBoardForm;
+import com.mycompany.springframework.interceptor.LoginCheck;
 import com.mycompany.springframework.service.Ch13BoardService;
+import com.mycompany.springframework.service.Ch13MemberService;
+import com.mycompany.springframework.service.Ch13MemberService.JoinResult;
+import com.mycompany.springframework.service.Ch13MemberService.LoginResult;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,6 +37,10 @@ public class Ch13Controller {
 	@Autowired
 	private Ch13BoardService boardService;
 	
+	@Resource
+	private Ch13MemberService memberService;
+	
+	@LoginCheck
 	@GetMapping("/writeBoardForm")
 	public String writeBoardForm(Model model) {
 		model.addAttribute("chNum","ch13");
@@ -61,11 +71,13 @@ public class Ch13Controller {
 	}*/
 	
 	@PostMapping("/writeBoard")
-	public String writeBoard(Ch13WriteBoardForm form) throws Exception {
+	public String writeBoard(Ch13WriteBoardForm form, HttpSession session) throws Exception {
 		Ch13Board board = new Ch13Board();
 		board.setBtitle(form.getBtitle());
 		board.setBcontent(form.getBcontent());
-		board.setMid("user");
+		/*board.setMid("user");*/
+		Ch13Member member = (Ch13Member) session.getAttribute("login");
+		board.setMid(member.getMid());
 		MultipartFile battach= form.getBattach();
 		
 		if(!battach.isEmpty()) {
@@ -78,6 +90,7 @@ public class Ch13Controller {
 	}
 	
 	//게시글 목록
+	@LoginCheck
 	@GetMapping("/boardList")								/*┌페이지 넘버가 넘어오지 않았을 때 1이 되도록 하는 것*/ 
 	public String boardList(Model model,@RequestParam(defaultValue = "1") int pageNo,
 				HttpSession session) {
@@ -162,6 +175,59 @@ public class Ch13Controller {
 		Ch13Pager pager= (Ch13Pager) session.getAttribute("pager");
 		int pageNo = pager.getPageNo();
 		return "redirect:/ch13/boardList?pageNo="+pageNo;
+	}
+	
+	@GetMapping("/joinForm")
+	public String joinForm(Model model) {
+		model.addAttribute("chNo","ch13");
+		return "ch13/joinForm";
+	}
+	
+	@PostMapping("/join")
+	public String join(Ch13Member member, Model model) { 
+		member.setMenabled(true);
+		log.info(member.toString());
+		JoinResult joinResult = memberService.join(member);
+		if (joinResult == JoinResult.FAIL_DUPLICATED_MID) {
+			String errorMessage = "아이디가 존재합니다.";
+			model.addAttribute("errorMessage",errorMessage);
+			return "ch13/joinForm"; //dto를 받았을 경우 return 값으로 바로 쓸 수 있다.
+		}else {//if(joinResult==joinResult.SUCCESS) 
+			return "redirect:/";			
+		}
+	}
+	
+	@GetMapping("/loginForm")
+	public String loginForm(Model model) {
+		model.addAttribute("chNum", "ch13");
+		return "ch13/loginForm";
+	}
+	
+	@PostMapping("/login")
+	public String login(Ch13Member member, Model model, HttpSession session) {
+		LoginResult loginResult =  memberService.login(member);
+		if (loginResult == LoginResult.FAIL_MID) {
+			model.addAttribute("chNum", "ch13");
+			model.addAttribute("errorMid", "아이디가 존재하지 않습니다.");
+			return "ch13/loginForm";
+		} else if(loginResult == LoginResult.FAIL_MPASSSWORD) {
+			model.addAttribute("chNum", "ch13");
+			model.addAttribute("errorMpassword", "비밀번호가 존재하지 않습니다.");
+			return "ch13/loginForm";
+		} else if (loginResult == LoginResult.FAIL_ENABLED) {
+			model.addAttribute("chNum", "ch13");
+			return "redirect:/";
+
+		} else { //loginResult == loginResult.SUCCESS 인 경우	
+			session.setAttribute("login", member);
+			return "redirect:/";
+		}
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("login");
+		return "redirect:/ch13/loginForm";
 	}
 	
 }

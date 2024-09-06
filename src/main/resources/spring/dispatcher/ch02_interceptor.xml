@@ -5,12 +5,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-<!-- 	<mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>path="/**" :모든 요청에서 이 인터셉터가 동작하겠다.
+			<mvc:mapping path="/**"/>
+			<!-- path="/**" :모든 요청에서 이 인터셉터가 동작하겠다. -->
 			<bean class="com.mycompany.springframework.interceptor.LoginCheckInterceptor"></bean>
-			bean : 이 클래스를 가지고 관리객체를 만드는 기능
+			<!-- bean : 이 클래스를 가지고 관리객체를 만드는 기능 -->
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 
 </beans>
