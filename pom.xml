@@ -147,6 +147,7 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.9.22.1</version>
 		</dependency>
+		
 		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -184,8 +185,8 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${springframework-security-version}</version>
 		</dependency>
-	
-</dependencies>
+
+	</dependencies>
 
 	<!-- <repositories> <repository> <snapshots> <enabled>false</enabled> </snapshots> 
 		<id>central</id> <name>Central Repository</name> <url>https://repo.maven.apache.org/dksjdkjsdjksd/maven2</url> 

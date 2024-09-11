@@ -392,6 +392,7 @@
 			
 						<li><a href="${pageContext.request.contextPath}/ch17/authorityCheck">권한별 내용보기</a></li>
 						<li><a href="${pageContext.request.contextPath}/ch17/userInfo">로그인 한 사용자 정보 보기</a></li>
+						<li><a href="${pageContext.request.contextPath}/ch17/joinForm">회원가입</a></li>
 					
 					</li>
 

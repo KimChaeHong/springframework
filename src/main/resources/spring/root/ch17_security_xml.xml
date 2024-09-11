@@ -29,7 +29,28 @@
 		<!-- 사이트간 요청 위조 방지 비활성화  -->
 		<security:csrf disabled="true"/>
 		
+		<!-- 권한이 불충분할 경우 이동할 경로 -->
+		<!-- 로그인이 안되어 있을 경우 : 로그인 폼으로 이동 -->			 
+		<!-- 현재 로그인 된 사용자가 권한 불충분 일 경우 이동할 경로-->
+		<security:access-denied-handler error-page="/ch17/error403"/>
+		
 	</security:http>
+	
+	<!-- @Secured를 사용하기 위한 추가 설정 -->
+	<security:global-method-security secured-annotations="enabled"/>
+	<!-- 설정 두가지 추가
+		pom.xml
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.22.1</version>
+		</dependency>
+		
+		ch14_aop.xml
+		<aop:aspectj-autoproxy/>
+	 -->
+	
+	
 	
 	<bean id="ch17AuthenticationSuccessHandeler"
 		class="com.mycompany.springframework.security.Ch17AuthenticationSuccessHandler"/>

@@ -28,8 +28,19 @@
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()"><!-- 로그인 했다는 뜻 -->
 			<img width="40" src="${pageContext.request.contextPath}/resources/image/login.png"/>
+			<!-- 컨트롤러에서 로그인 아이디를 얻기 -->
 			<span class="text-white me-2"><sec:authentication property="principal.username"/></span>
+			
+			<!--CSRF가 비활성화 되어 있을 경우 : GET방식 -->
 			<a class="btn btn-danger btn-sm" href="${pageContext.request.contextPath}/logout">로그아웃</a>
+			
+			
+			<!--CSRF가 활성화 되어 있을 경우 : POST 방식 -->
+			<%-- <form class="d-inline-block" method="post" action="${pageContext.request.contextPath}/logout">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				<button class="btn btn-danger btn-sm" >로그아웃</button>
+			</form> --%>
+			
 		</sec:authorize>
 		
 		

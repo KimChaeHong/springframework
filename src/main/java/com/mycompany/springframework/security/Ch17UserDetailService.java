@@ -37,10 +37,6 @@ public class Ch17UserDetailService implements UserDetailsService{
 			
 			return userDetails;//userdetials를 가져와야함
 		}
-	
-	
-	
-	
-	
+		
 	
 }

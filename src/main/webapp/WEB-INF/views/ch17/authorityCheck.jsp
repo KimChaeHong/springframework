@@ -19,6 +19,13 @@
 				<li>ROLE_USER가 볼 수 있는 내용</li>
 			</sec:authorize>
 		</ul>
+		
+		<hr/>
+		<a href="admin/page">ROLE_ADMIN 권한으로 요청</a><br/>
+		<a href="manager/page">ROLE_MANAGER 권한으로 요청</a><br/>
+		<a href="user/page">ROLE_USER 권한으로 요청</a><br/>
+		
+		
 	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/bottom.jsp"/>
