@@ -16,27 +16,26 @@ import com.mycompany.springframework.dto.Ch13Member;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Service 
+@Service
 @Slf4j
-public class Ch17UserDetailService implements UserDetailsService{
+public class Ch17UserDetailService implements UserDetailsService {
 	@Autowired
 	private Ch13MemberDao memberDao;
 	
 	@Override
-		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) 
+			throws UsernameNotFoundException {
 		
-			Ch13Member member = memberDao.selectByMid(username);
-			if(member == null) {
-				throw new UsernameNotFoundException("Bad username");
-			}
-			
-			List<GrantedAuthority> authorities = new ArrayList<>();
-			authorities.add(new SimpleGrantedAuthority(member.getMrole()));
-		
-			UserDetails userDetails = new Ch17UserDetails(member, authorities);
-			
-			return userDetails;//userdetials를 가져와야함
+		Ch13Member member = memberDao.selectByMid(username);
+		if(member == null) {
+			throw new UsernameNotFoundException("Bad username");
 		}
 		
-	
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		authorities.add(new SimpleGrantedAuthority(member.getMrole()));
+		
+		UserDetails userDetails = new Ch17UserDetails(member, authorities);
+		
+		return userDetails;
+	}
 }

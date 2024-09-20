@@ -42,12 +42,6 @@
 			</form> --%>
 			
 		</sec:authorize>
-		
-		
-		
-		
-		
-		
-		
+	
 	</div>		
 </nav>

@@ -11,7 +11,7 @@
 	<security:http pattern="/resources/**" security="none"/>
 	
 	<!-- 시큐리티 필터 체인을 구성  -->
-	<!-- 브라우저아 id,pw를 받았을 때 로그인 할 것이냐 말것이냐의 기능 -->
+	<!-- 브라우저의 id,pw를 받았을 때 로그인 할 것이냐 말것이냐의 기능 -->
 	<security:http>
 		<!-- 폼 인증 방식 선택 --><!-- loginform 파라미터 값을 가져옴 -->
 		<security:form-login 
@@ -19,7 +19,7 @@
 			username-parameter="mid"	
 			password-parameter="mpassword"
 			login-processing-url="/login"
-			authentication-success-handler-ref="ch17AuthenticationSuccessHandeler"
+			authentication-success-handler-ref="ch17AuthenticationSuccessHandler"
 			authentication-failure-handler-ref="ch17AuthenticationFailureHandler"/>
 		<!-- 로그 아웃 설정 -->	
 		<security:logout
@@ -50,13 +50,11 @@
 		<aop:aspectj-autoproxy/>
 	 -->
 	
-	
-	
-	<bean id="ch17AuthenticationSuccessHandeler"
+	<bean id="ch17AuthenticationSuccessHandler"
 		class="com.mycompany.springframework.security.Ch17AuthenticationSuccessHandler"/>
 
 	<bean id="ch17AuthenticationFailureHandler"
-		class="com.mycompany.springframework.security.Ch17AuthenticationFailureHandler"></bean>
+		class="com.mycompany.springframework.security.Ch17AuthenticationFailureHandler"/>
 		
 	<bean id="ch17LogoutSuccessHandler"
 		class="com.mycompany.springframework.security.Ch17LogoutSuccessHandler"/>

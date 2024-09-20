@@ -10,7 +10,5 @@ public interface Ch13MemberDao {
 	public int insert(Ch13Member member);
 	public Ch13Member selectByMid(String mid);
 	
-	/*public void insert(Ch13Member member);
-	public Ch13Member selectByMid(String mid);*/
 
 }

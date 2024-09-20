@@ -22,8 +22,8 @@ public class Ch17AuthenticationFailureHandler
 			AuthenticationException exception) 
 					throws IOException, ServletException {
 		
-		log.info("실행#######");
-		log.info(exception.getMessage());
+		log.info("실행");
+		//log.info(exception.getMessage());
 		setDefaultFailureUrl("/ch17/loginForm");
 		
 		super.onAuthenticationFailure(request, response, exception);
