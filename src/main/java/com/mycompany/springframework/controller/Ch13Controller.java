@@ -1,7 +1,6 @@
 package com.mycompany.springframework.controller;
 
 import java.io.OutputStream;
-
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +22,6 @@ import com.mycompany.springframework.dto.Ch13Member;
 import com.mycompany.springframework.dto.Ch13Pager;
 import com.mycompany.springframework.dto.Ch13UpdateBoardForm;
 import com.mycompany.springframework.dto.Ch13WriteBoardForm;
-import com.mycompany.springframework.interceptor.LoginCheck;
 import com.mycompany.springframework.service.Ch13BoardService;
 import com.mycompany.springframework.service.Ch13MemberService;
 import com.mycompany.springframework.service.Ch13MemberService.JoinResult;
@@ -40,7 +39,8 @@ public class Ch13Controller {
 	@Resource
 	private Ch13MemberService memberService;
 	
-	@LoginCheck
+	//@LoginCheck
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/writeBoardForm")
 	public String writeBoardForm(Model model) {
 		model.addAttribute("chNum","ch13");
@@ -90,7 +90,8 @@ public class Ch13Controller {
 	}
 	
 	//게시글 목록
-	@LoginCheck
+	//@LoginCheck
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/boardList")								/*┌페이지 넘버가 넘어오지 않았을 때 1이 되도록 하는 것*/ 
 	public String boardList(Model model,@RequestParam(defaultValue = "1") int pageNo,
 				HttpSession session) {
