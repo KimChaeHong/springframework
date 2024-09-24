@@ -25,8 +25,6 @@ public class Ch17Controller {
 	@Autowired
 	private Ch13MemberService memberService;
 	
-	
-	
 	@RequestMapping("/loginForm")
 	public String loginForm(Model model) {
 		model.addAttribute("chNum","ch17");
@@ -52,7 +50,6 @@ public class Ch17Controller {
 		//String mid = userDetails.getUsername();
 				
 		model.addAttribute("mid",mid);
-		
 		
 		//사용자의 모든 정보를 얻고 싶을 경우
 		Ch17UserDetails userDetails = (Ch17UserDetails) authentication.getPrincipal();
