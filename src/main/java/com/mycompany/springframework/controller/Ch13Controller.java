@@ -159,6 +159,7 @@ public class Ch13Controller {
 		board.setBno(form.getBno());
 		board.setBtitle(form.getBtitle());
 		board.setBcontent(form.getBcontent());
+		
 		MultipartFile mf = form.getBattach();
 		if(!mf.isEmpty()){
 			board.setBattachoname(mf.getOriginalFilename());

@@ -46,8 +46,8 @@
 		<multipart-config>
 			<location>C:/Temp</location>
 			<max-file-size>20971520</max-file-size><!-- 한 파일 당 20메가 까지 -->
-			<max-request-size>10485766</max-request-size><!-- 전체 요청의 크기 문자파트+파일*파일갯수 -->
-			<file-size-threshold>1024</file-size-threshold><!-- 단위가 byte -->
+			<max-request-size>10485766</max-request-size><!-- 전체 요청의 크기 : 문자파트+파일*파일갯수 -->
+			<file-size-threshold>1024</file-size-threshold><!-- 임시파일 공간 부족할 때 쓰는 공간, 단위가 byte -->
 		</multipart-config>
 
 	</servlet>
